@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SE Study Hub</title>
+  <meta name="description" content="Interactive Software Engineering study hub for final exams and technical interviews.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <script>
+    // Apply the saved theme before first paint to avoid a flash.
+    try {
+      var saved = JSON.parse(localStorage.getItem('se-study-hub:v1') || '{}');
+      if (saved.settings && saved.settings.theme) document.documentElement.dataset.theme = saved.settings.theme;
+    } catch (e) {}
+  </script>
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar" id="sidebar">
+      <div class="brand">
+        <span class="brand-mark">&lt;/&gt;</span>
+        <div>
+          <div class="brand-name">SE Study Hub</div>
+          <div class="brand-sub">Final exam &amp; interview prep</div>
+        </div>
+      </div>
+      <nav class="nav" id="nav">
+        <div class="nav-label">Study</div>
+        <a href="#/dashboard" data-route="dashboard"><span class="ni">◫</span>Dashboard</a>
+        <a href="#/quiz" data-route="quiz"><span class="ni">✓</span>Quiz Engine</a>
+        <a href="#/flashcards" data-route="flashcards"><span class="ni">❐</span>Flashcards</a>
+        <div class="nav-label">Workspace</div>
+        <a href="#/boolean" data-route="boolean"><span class="ni">∧</span>Boolean Solver</a>
+        <a href="#/simulator" data-route="simulator"><span class="ni">▤</span>Algorithm Simulator</a>
+        <a href="#/reference" data-route="reference"><span class="ni">☰</span>Reference &amp; Cheat Sheets</a>
+        <div class="nav-label">Career</div>
+        <a href="#/interview" data-route="interview"><span class="ni">◷</span>Interview Simulator</a>
+        <a href="#/analytics" data-route="analytics"><span class="ni">◔</span>Analytics &amp; Advisor</a>
+      </nav>
+      <div class="sidebar-foot">
+        <button class="btn btn-ghost btn-sm" id="themeToggle" title="Toggle light/dark theme">◐ Theme</button>
+        <span class="kbd-hint">Press <kbd>/</kbd> for reference</span>
+      </div>
+    </aside>
+
+    <div class="main-wrap">
+      <header class="topbar">
+        <button class="btn btn-ghost icon-btn" id="menuToggle" aria-label="Open navigation">☰</button>
+        <div class="topbar-title" id="topbarTitle">Dashboard</div>
+        <div class="topbar-actions">
+          <span class="streak" id="streakBadge" title="Daily study streak"></span>
+          <button class="btn btn-ghost btn-sm" id="drawerOpen" title="Quick reference drawer (/)">☰ Quick reference</button>
+        </div>
+      </header>
+      <main class="main" id="view" tabindex="-1"></main>
+    </div>
+  </div>
+
+  <!-- Quick reference drawer -->
+  <div class="drawer-backdrop" id="drawerBackdrop"></div>
+  <aside class="drawer" id="drawer" aria-hidden="true">
+    <div class="drawer-head">
+      <strong>Quick reference</strong>
+      <button class="btn btn-ghost icon-btn" id="drawerClose" aria-label="Close">✕</button>
+    </div>
+    <div class="drawer-body" id="drawerBody"></div>
+  </aside>
+
+  <div class="toast-wrap" id="toasts"></div>
+
+  <!-- Core -->
+  <script src="js/util.js"></script>
+  <script src="js/storage.js"></script>
+  <!-- Content -->
+  <script src="js/data/topics.js"></script>
+  <script src="js/data/questions.js"></script>
+  <script src="js/data/flashcards.js"></script>
+  <script src="js/data/glossary.js"></script>
+  <script src="js/data/cheatsheets.js"></script>
+  <script src="js/data/interview.js"></script>
+  <!-- Logic -->
+  <script src="js/advisor.js"></script>
+  <script src="js/boolean-engine.js"></script>
+  <!-- Views -->
+  <script src="js/views/dashboard.js"></script>
+  <script src="js/views/quiz.js"></script>
+  <script src="js/views/flashcards.js"></script>
+  <script src="js/views/boolean.js"></script>
+  <script src="js/views/simulator.js"></script>
+  <script src="js/views/reference.js"></script>
+  <script src="js/views/interview.js"></script>
+  <script src="js/views/analytics.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
